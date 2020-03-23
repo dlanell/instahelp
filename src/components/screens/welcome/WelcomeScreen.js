@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity, Text, View, Image, SafeAreaView} from 'react-native';
 import styles from './WelcomeScreen.styles';
 
-export const WelcomeScreen = () => {
+export const WelcomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.screen}>
@@ -10,7 +10,7 @@ export const WelcomeScreen = () => {
           <Image
             testID={'welcome-img'}
             style={styles.welcomeImg}
-            source={require('../assets/groceries.png')}
+            source={require('../../../assets/groceries.png')}
           />
           <Text testID={'welcome-title'} style={styles.title}>
             InstaHelp

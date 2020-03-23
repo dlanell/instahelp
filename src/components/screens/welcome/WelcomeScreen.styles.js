@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {appColors} from '../colors';
+import {appColors} from '../../../colors';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
