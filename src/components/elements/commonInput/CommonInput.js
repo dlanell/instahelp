@@ -4,6 +4,11 @@ import {Text, View, TextInput} from 'react-native';
 import styles from './CommonInput.styles';
 import {appColors} from '../../../colors';
 
+export const TextContentEnum = {
+  NUMBER: 'number-pad',
+  TEXT: 'default',
+};
+
 export const CommonInput = ({
   label,
   value,
@@ -14,6 +19,7 @@ export const CommonInput = ({
   containerStyle,
   isMultiline,
   maxLength,
+  keyboardType,
 }) => {
   return (
     <View testID={testID && testID} style={containerStyle && containerStyle}>
@@ -32,6 +38,7 @@ export const CommonInput = ({
         placeholderTextColor={appColors.darkGrey}
         multiline={isMultiline}
         maxLength={maxLength}
+        keyboardType={keyboardType ? keyboardType : TextContentEnum.TEXT}
       />
     </View>
   );
@@ -47,4 +54,5 @@ CommonInput.propTypes = {
   required: PropTypes.bool,
   isMultiline: PropTypes.bool,
   containerStyle: PropTypes.object,
+  keyboardType: PropTypes.string,
 };

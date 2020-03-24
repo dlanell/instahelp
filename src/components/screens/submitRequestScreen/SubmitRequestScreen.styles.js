@@ -24,4 +24,7 @@ export default StyleSheet.create({
   formField: {
     marginBottom: heightPercentageToDP('3%'),
   },
+  lastField: {
+    marginBottom: heightPercentageToDP('7%'),
+  },
 });
