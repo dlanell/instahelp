@@ -34,36 +34,7 @@ export default StyleSheet.create({
     marginBottom: 30,
   },
   button: {
-    width: widthPercentageToDP('80%'),
-    height: 50,
-    borderRadius: 30,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  primaryButton: {
-    backgroundColor: appColors.brightOrange,
     marginBottom: heightPercentageToDP('2.5%'),
-  },
-  primaryButtonText: {
-    color: appColors.white,
-    fontWeight: '800',
-    fontSize: heightPercentageToDP('2%'),
-  },
-  secondaryButton: {
-    backgroundColor: appColors.offWhite,
-    shadowColor: '#000',
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-  },
-  secondaryButtonText: {
-    color: appColors.black,
-    fontWeight: '500',
-    fontSize: heightPercentageToDP('2%'),
   },
   safeArea: {
     backgroundColor: appColors.greyWhite,

@@ -12,6 +12,7 @@ import {isMountedRef, navigationRef} from './src/navigation/NavigationService';
 import {createStackNavigator} from '@react-navigation/stack';
 import {WelcomeScreen} from './src/components/screens/welcome/WelcomeScreen';
 import {Screen} from './src/navigation/screenConstants';
+import {SubmitRequestScreen} from './src/components/screens/submitRequestScreen/SubmitRequestScreen';
 
 const Stack = createStackNavigator();
 const App: () => React$Node = () => {
@@ -28,6 +29,11 @@ const App: () => React$Node = () => {
           name={Screen.WELCOME}
           component={WelcomeScreen}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name={Screen.SUBMIT_REQUEST}
+          component={SubmitRequestScreen}
+          options={{title: 'Make a Request'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

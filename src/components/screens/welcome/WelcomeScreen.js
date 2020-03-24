@@ -1,6 +1,9 @@
 import React from 'react';
-import {TouchableOpacity, Text, View, Image, SafeAreaView} from 'react-native';
+import {Text, View, Image, SafeAreaView} from 'react-native';
 import styles from './WelcomeScreen.styles';
+import {Button, ButtonStyleEnum} from '../../elements/button/Button';
+import {Screen} from '../../../navigation/screenConstants';
+// import {Screen} from '../../../navigation/screenConstants';
 
 export const WelcomeScreen = ({navigation}) => {
   return (
@@ -26,16 +29,17 @@ export const WelcomeScreen = ({navigation}) => {
             </Text>
           </View>
         </View>
-        <TouchableOpacity
-          testID={'make-a-request-button'}
-          style={[styles.button, styles.primaryButton]}>
-          <Text style={styles.primaryButtonText}>Make A Request</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          testID={'browse-requests-button'}
-          style={[styles.button, styles.secondaryButton]}>
-          <Text style={styles.secondaryButtonText}>Browse Requests</Text>
-        </TouchableOpacity>
+        <Button
+          buttonStyle={ButtonStyleEnum.PRIMARY}
+          text={'Make A Request'}
+          onPress={() => navigation.navigate(Screen.SUBMIT_REQUEST)}
+          optionalStyle={styles.button}
+        />
+        <Button
+          buttonStyle={ButtonStyleEnum.SECONDARY}
+          text={'Browse Requests'}
+          onPress={() => {}}
+        />
       </View>
     </SafeAreaView>
   );
