@@ -30,7 +30,7 @@ describe('WelcomeScreen', () => {
       const mockNavigation = {navigate: jest.fn()};
       const renderAPI = render(<WelcomeScreen navigation={mockNavigation} />);
 
-      const makeRequestButton = renderAPI.getByTestId('make-request-button');
+      const makeRequestButton = renderAPI.getByTestId('make-a-request-button');
       fireEvent.press(makeRequestButton);
 
       expect(mockNavigation.navigate).toHaveBeenCalledWith(

@@ -3,7 +3,6 @@ import {Text, View, Image, SafeAreaView} from 'react-native';
 import styles from './WelcomeScreen.styles';
 import {Button, ButtonStyleEnum} from '../../elements/button/Button';
 import {Screen} from '../../../navigation/screenConstants';
-// import {Screen} from '../../../navigation/screenConstants';
 
 export const WelcomeScreen = ({navigation}) => {
   return (
@@ -31,12 +30,13 @@ export const WelcomeScreen = ({navigation}) => {
         </View>
         <Button
           buttonStyle={ButtonStyleEnum.PRIMARY}
-          testID={'make-request-button'}
+          testID={'make-a-request-button'}
           text={'Make A Request'}
           onPress={() => navigation.navigate(Screen.SUBMIT_REQUEST)}
           optionalStyle={styles.button}
         />
         <Button
+          testID={'browse-requests-button'}
           buttonStyle={ButtonStyleEnum.SECONDARY}
           text={'Browse Requests'}
           onPress={() => {}}
