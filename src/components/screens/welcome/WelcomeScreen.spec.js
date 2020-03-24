@@ -1,6 +1,7 @@
 import React from 'react';
-import {render} from 'react-native-testing-library';
+import {render, fireEvent} from 'react-native-testing-library';
 import {WelcomeScreen} from './WelcomeScreen';
+import {Screen} from '../../../navigation/screenConstants';
 
 describe('WelcomeScreen', () => {
   describe('by default', () => {
@@ -24,6 +25,17 @@ describe('WelcomeScreen', () => {
       const renderAPI = render(<WelcomeScreen />);
 
       expect(renderAPI.getByTestId('welcome-img')).not.toBeNull();
+    });
+    it('should navigate to submit request screen when make request button is pressed', () => {
+      const mockNavigation = {navigate: jest.fn()};
+      const renderAPI = render(<WelcomeScreen navigation={mockNavigation} />);
+
+      const makeRequestButton = renderAPI.getByTestId('make-request-button');
+      fireEvent.press(makeRequestButton);
+
+      expect(mockNavigation.navigate).toHaveBeenCalledWith(
+        Screen.SUBMIT_REQUEST,
+      );
     });
   });
 });

@@ -31,6 +31,7 @@ export const WelcomeScreen = ({navigation}) => {
         </View>
         <Button
           buttonStyle={ButtonStyleEnum.PRIMARY}
+          testID={'make-request-button'}
           text={'Make A Request'}
           onPress={() => navigation.navigate(Screen.SUBMIT_REQUEST)}
           optionalStyle={styles.button}
