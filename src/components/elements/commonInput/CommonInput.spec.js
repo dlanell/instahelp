@@ -16,6 +16,19 @@ describe('CommonInput', () => {
 
       expect(renderAPI.getByText('yoda')).not.toBeNull();
     });
+    it('should render detailed label', () => {
+      const renderAPI = render(
+        <CommonInput
+          onChangeText={jest.fn()}
+          label={'yoda'}
+          detailedLabel={'Windu'}
+          placeholder={''}
+          value={''}
+        />,
+      );
+
+      expect(renderAPI.getByText('Windu')).not.toBeNull();
+    });
     it('should render placeholder', () => {
       const renderAPI = render(
         <CommonInput

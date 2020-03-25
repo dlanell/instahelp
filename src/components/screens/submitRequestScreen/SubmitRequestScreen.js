@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {Text, View, SafeAreaView, ScrollView} from 'react-native';
+import {
+  Text,
+  SafeAreaView,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import styles from './SubmitRequestScreen.styles';
 import {
   CommonInput,
@@ -15,8 +21,11 @@ export const SubmitRequestScreen = () => {
   const [zipCode, setZipCode] = useState('');
 
   return (
-    <SafeAreaView>
-      <View style={styles.screen}>
+    <SafeAreaView style={styles.safeArea}>
+      <KeyboardAvoidingView
+        style={styles.screen}
+        enabled
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text
             style={[styles.text, styles.instructionText]}
@@ -48,10 +57,12 @@ export const SubmitRequestScreen = () => {
           />
           <CommonInput
             testID={'request-details-field'}
-            label={'Additional Details'}
+            label={'Any other additional details?'}
             onChangeText={text => setRequestDetails(text)}
             value={requestDetails}
-            placeholder={'Write here...'}
+            placeholder={
+              'Provide additional information like your location or what you need'
+            }
             required={true}
             containerStyle={styles.formField}
             maxLength={350}
@@ -72,6 +83,7 @@ export const SubmitRequestScreen = () => {
           <CommonInput
             testID={'phone-number-field'}
             label={'Phone number'}
+            detailedLabel={'Your number wont be shared publicly.'}
             onChangeText={text => setPhoneNumber(text)}
             value={phoneNumber}
             placeholder={'(000) 000-0000'}
@@ -86,7 +98,7 @@ export const SubmitRequestScreen = () => {
             text={'Submit Request'}
           />
         </ScrollView>
-      </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

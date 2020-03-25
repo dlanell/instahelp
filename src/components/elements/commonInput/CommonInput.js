@@ -19,14 +19,26 @@ export const CommonInput = ({
   containerStyle,
   isMultiline,
   maxLength,
+  detailedLabel,
   keyboardType,
 }) => {
   return (
     <View testID={testID && testID} style={containerStyle && containerStyle}>
       <View style={styles.textInputLabelContainer}>
-        <Text style={[styles.textInputLabel, styles.text]}>{label}</Text>
+        <Text
+          style={[
+            detailedLabel
+              ? styles.textInputLabelWithDetails
+              : styles.textInputLabel,
+            styles.text,
+          ]}>
+          {label}
+        </Text>
         {required && <Text style={[styles.textAsterisk, styles.text]}>*</Text>}
       </View>
+      {detailedLabel && (
+        <Text style={styles.detailedText}>{detailedLabel}</Text>
+      )}
       <TextInput
         style={[
           isMultiline ? styles.multilineTextInputField : styles.textInputField,
@@ -48,6 +60,7 @@ CommonInput.propTypes = {
   testID: PropTypes.string,
   maxLength: PropTypes.number,
   label: PropTypes.string.isRequired,
+  detailedLabel: PropTypes.string,
   value: PropTypes.string.isRequired,
   onChangeText: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,

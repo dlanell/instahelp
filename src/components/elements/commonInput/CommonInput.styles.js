@@ -7,7 +7,11 @@ import {
 
 export default StyleSheet.create({
   text: {
-    fontSize: heightPercentageToDP('2%')
+    fontSize: heightPercentageToDP('2%'),
+  },
+  detailedText: {
+    fontSize: heightPercentageToDP('1.8%'),
+    marginBottom: heightPercentageToDP('2%'),
   },
   textInputField: {
     borderWidth: 1,
@@ -36,6 +40,10 @@ export default StyleSheet.create({
   },
   textInputLabel: {
     marginBottom: heightPercentageToDP('2%'),
+    marginRight: widthPercentageToDP('1%'),
+  },
+  textInputLabelWithDetails: {
+    marginBottom: heightPercentageToDP('1%'),
     marginRight: widthPercentageToDP('1%'),
   },
   textAsterisk: {
