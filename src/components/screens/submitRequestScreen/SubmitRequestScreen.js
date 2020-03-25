@@ -12,11 +12,12 @@ export const SubmitRequestScreen = () => {
   const [request, setRequest] = useState('');
   const [requestDetails, setRequestDetails] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [zipCode, setZipCode] = useState('');
 
   return (
     <SafeAreaView>
       <View style={styles.screen}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Text
             style={[styles.text, styles.instructionText]}
             testID={'submit-request-instructions'}>
@@ -56,6 +57,17 @@ export const SubmitRequestScreen = () => {
             maxLength={350}
             keyboardType={TextContentEnum.TEXT}
             isMultiline={true}
+          />
+          <CommonInput
+            testID={'zip-code-field'}
+            label={"What's your zip code?"}
+            onChangeText={text => setZipCode(text)}
+            value={zipCode}
+            placeholder={'Zip code'}
+            required={true}
+            containerStyle={styles.formField}
+            maxLength={5}
+            keyboardType={TextContentEnum.NUMBER}
           />
           <CommonInput
             testID={'phone-number-field'}

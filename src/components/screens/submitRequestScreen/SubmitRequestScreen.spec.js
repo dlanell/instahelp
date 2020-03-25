@@ -26,5 +26,9 @@ describe('SubmitRequestScreen', () => {
       const renderAPI = render(<SubmitRequestScreen />);
       expect(renderAPI.getByTestId('phone-number-field')).not.toBeNull();
     });
+    it('should render zip code field', () => {
+      const renderAPI = render(<SubmitRequestScreen />);
+      expect(renderAPI.getByTestId('zip-code-field')).not.toBeNull();
+    });
   });
 });

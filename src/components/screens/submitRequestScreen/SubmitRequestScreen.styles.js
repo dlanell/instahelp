@@ -7,10 +7,10 @@ import {
 
 export default StyleSheet.create({
   text: {
-    fontSize: heightPercentageToDP('2%')
+    fontSize: heightPercentageToDP('2%'),
   },
   screen: {
-    height: heightPercentageToDP('100%'),
+    height: heightPercentageToDP('90%'),
     width: widthPercentageToDP('100%'),
     display: 'flex',
     flexDirection: 'column',
