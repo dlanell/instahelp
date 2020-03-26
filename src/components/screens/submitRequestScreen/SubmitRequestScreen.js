@@ -5,7 +5,9 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
+import {Screen} from '../../../navigation/screenConstants';
 import styles from './SubmitRequestScreen.styles';
 import {
   CommonInput,
@@ -13,14 +15,30 @@ import {
 } from '../../elements/commonInput/CommonInput';
 import {Button, ButtonStyleEnum} from '../../elements/button/Button';
 import {DatePicker} from '../../elements/datePicker/DatePicker';
+import {VolunteerRequestService} from '../../../services/VolunteerRequestService';
 
-export const SubmitRequestScreen = () => {
+export const SubmitRequestScreen = ({navigation}) => {
   const [name, setName] = useState('');
   const [request, setRequest] = useState('');
   const [requestDetails, setRequestDetails] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [date, setDate] = useState(new Date());
+  const [disableSubmit, setDisableSubmit] = useState(false);
+
+  const handleSubmit = async () => {
+    if (disableSubmit) {
+      return;
+    }
+    setDisableSubmit(true);
+    await VolunteerRequestService.submitVolunteerRequest({})
+      .then(() => {
+        Alert.alert('Success', 'successfully submitted volunteer request');
+        navigation.navigate(Screen.WELCOME);
+      })
+      .catch(() => {})
+      .finally(() => setDisableSubmit(false));
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -101,7 +119,9 @@ export const SubmitRequestScreen = () => {
             keyboardType={TextContentEnum.NUMBER}
           />
           <Button
-            onPress={() => {}}
+            testID={'submit-volunteer-request-button'}
+            disabled={disableSubmit}
+            onPress={handleSubmit}
             buttonStyle={ButtonStyleEnum.PRIMARY}
             text={'Submit Request'}
           />

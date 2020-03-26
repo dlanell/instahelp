@@ -8,9 +8,17 @@ export const ButtonStyleEnum = {
   SECONDARY: 'Secondary',
 };
 
-export const Button = ({text, buttonStyle, testID, optionalStyle, onPress}) => {
+export const Button = ({
+  text,
+  buttonStyle,
+  testID,
+  optionalStyle,
+  onPress,
+  disabled,
+}) => {
   return (
     <TouchableOpacity
+      disabled={disabled}
       testID={testID}
       onPress={onPress}
       style={[
@@ -38,4 +46,5 @@ Button.propTypes = {
   buttonStyle: PropTypes.string.isRequired,
   testID: PropTypes.string,
   onPress: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 };
