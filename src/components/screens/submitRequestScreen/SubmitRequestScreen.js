@@ -12,6 +12,7 @@ import {
   TextContentEnum,
 } from '../../elements/commonInput/CommonInput';
 import {Button, ButtonStyleEnum} from '../../elements/button/Button';
+import {DatePicker} from '../../elements/datePicker/DatePicker';
 
 export const SubmitRequestScreen = () => {
   const [name, setName] = useState('');
@@ -19,6 +20,7 @@ export const SubmitRequestScreen = () => {
   const [requestDetails, setRequestDetails] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [date, setDate] = useState(new Date());
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -61,7 +63,7 @@ export const SubmitRequestScreen = () => {
             onChangeText={text => setRequestDetails(text)}
             value={requestDetails}
             placeholder={
-              'Provide additional information like your location or what you need'
+              'Provide additional information like your location or what you need.'
             }
             required={true}
             containerStyle={styles.formField}
@@ -79,6 +81,12 @@ export const SubmitRequestScreen = () => {
             containerStyle={styles.formField}
             maxLength={5}
             keyboardType={TextContentEnum.NUMBER}
+          />
+          <DatePicker
+            testID={'date-field'}
+            date={date}
+            setDateFn={setDate}
+            label={'When do you need it by?'}
           />
           <CommonInput
             testID={'phone-number-field'}

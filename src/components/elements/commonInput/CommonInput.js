@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Text, View, TextInput} from 'react-native';
+import {View, TextInput} from 'react-native';
 import styles from './CommonInput.styles';
 import {appColors} from '../../../colors';
+import {Label} from '../label/Label';
 
 export const TextContentEnum = {
   NUMBER: 'number-pad',
@@ -24,21 +25,7 @@ export const CommonInput = ({
 }) => {
   return (
     <View testID={testID && testID} style={containerStyle && containerStyle}>
-      <View style={styles.textInputLabelContainer}>
-        <Text
-          style={[
-            detailedLabel
-              ? styles.textInputLabelWithDetails
-              : styles.textInputLabel,
-            styles.text,
-          ]}>
-          {label}
-        </Text>
-        {required && <Text style={[styles.textAsterisk, styles.text]}>*</Text>}
-      </View>
-      {detailedLabel && (
-        <Text style={styles.detailedText}>{detailedLabel}</Text>
-      )}
+      <Label detailedLabel={detailedLabel} required={required} label={label} />
       <TextInput
         style={[
           isMultiline ? styles.multilineTextInputField : styles.textInputField,

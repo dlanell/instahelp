@@ -12,7 +12,7 @@ describe('Button', () => {
       />,
     );
 
-    expect(renderAPI.getByText('hello')).not.toBeNull();
+    expect(renderAPI.queryByText('hello')).not.toBeNull();
   });
   it('should call on press when pressed', () => {
     const mockFunction = jest.fn();
@@ -25,7 +25,7 @@ describe('Button', () => {
       />,
     );
 
-    const button = renderAPI.getByTestId('testID');
+    const button = renderAPI.queryByTestId('testID');
     fireEvent.press(button);
 
     expect(mockFunction).toHaveBeenCalled();

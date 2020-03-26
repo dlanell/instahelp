@@ -14,7 +14,7 @@ describe('CommonInput', () => {
         />,
       );
 
-      expect(renderAPI.getByText('yoda')).not.toBeNull();
+      expect(renderAPI.queryByText('yoda')).not.toBeNull();
     });
     it('should render detailed label', () => {
       const renderAPI = render(
@@ -27,7 +27,7 @@ describe('CommonInput', () => {
         />,
       );
 
-      expect(renderAPI.getByText('Windu')).not.toBeNull();
+      expect(renderAPI.queryByText('Windu')).not.toBeNull();
     });
     it('should render placeholder', () => {
       const renderAPI = render(
@@ -65,7 +65,7 @@ describe('CommonInput', () => {
       );
 
       const input = renderAPI.getByDisplayValue('windu');
-      fireEvent.changeText(input, 'anakin')
+      fireEvent.changeText(input, 'anakin');
 
       expect(mockChangetext).toHaveBeenCalledWith('anakin');
     });
