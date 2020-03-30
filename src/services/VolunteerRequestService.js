@@ -1,9 +1,9 @@
-// import axios from 'axios';
-// import {API_URL} from './serviceConstants';
+import axios from 'axios';
+import {API_URL} from './serviceConstants';
 
 export class VolunteerRequestService {
   static submitVolunteerRequest = async data => {
-    // await axios.post(`${API_URL}/volunteerRequest`, data);
-    return Promise.resolve(true);
+    return await axios.post(`${API_URL}/volunteer-requests`, data);
+    // return Promise.resolve(true);
   };
 }

@@ -19,25 +19,62 @@ import {VolunteerRequestService} from '../../../services/VolunteerRequestService
 
 export const SubmitRequestScreen = ({navigation}) => {
   const [name, setName] = useState('');
-  const [request, setRequest] = useState('');
-  const [requestDetails, setRequestDetails] = useState('');
+  const [title, setTitle] = useState('');
+  const [details, setDetails] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [zipCode, setZipCode] = useState('');
-  const [date, setDate] = useState(new Date());
+  const [zip, setZip] = useState('');
+  const [date, setDate] = useState(addDays(new Date()));
   const [disableSubmit, setDisableSubmit] = useState(false);
+
+  function addDays(dateValue) {
+    const copy = new Date(Number(dateValue));
+    copy.setDate(dateValue.getDate() + 2);
+    return copy;
+  }
+
+  const validateInputs = () => {
+    const validName = name !== '';
+    const validTitle = title !== '';
+    const validDetails = details !== '';
+    const validPhoneNumber = phoneNumber.length === 10;
+    const validZip = zip.length === 5;
+
+    return (
+      validName && validTitle && validDetails && validPhoneNumber && validZip
+    );
+  };
+
+  async function handleSubmitRequestAPI() {
+    setDisableSubmit(true);
+    await VolunteerRequestService.submitVolunteerRequest({
+      name,
+      title,
+      details,
+      date,
+      zip,
+      phoneNumber,
+      email: '',
+    })
+      .then(() => {
+        Alert.alert('Success', 'successfully submitted volunteer request');
+        navigation.navigate(Screen.WELCOME);
+      })
+      .catch(error => {
+        Alert.alert('Error', JSON.stringify(error));
+      })
+      .finally(() => setDisableSubmit(false));
+  }
 
   const handleSubmit = async () => {
     if (disableSubmit) {
       return;
     }
-    setDisableSubmit(true);
-    await VolunteerRequestService.submitVolunteerRequest({})
-      .then(() => {
-        Alert.alert('Success', 'successfully submitted volunteer request');
-        navigation.navigate(Screen.WELCOME);
-      })
-      .catch(() => {})
-      .finally(() => setDisableSubmit(false));
+    validateInputs()
+      ? await handleSubmitRequestAPI()
+      : Alert.alert(
+          'Check Entries',
+          'Please fill out all fields to submit request',
+        );
   };
 
   return (
@@ -67,8 +104,8 @@ export const SubmitRequestScreen = ({navigation}) => {
           <CommonInput
             testID={'request-field'}
             label={'What do you need help with?'}
-            onChangeText={text => setRequest(text)}
-            value={request}
+            onChangeText={text => setTitle(text)}
+            value={title}
             placeholder={'Short blurb'}
             required={true}
             containerStyle={styles.formField}
@@ -78,8 +115,8 @@ export const SubmitRequestScreen = ({navigation}) => {
           <CommonInput
             testID={'request-details-field'}
             label={'Any other additional details?'}
-            onChangeText={text => setRequestDetails(text)}
-            value={requestDetails}
+            onChangeText={text => setDetails(text)}
+            value={details}
             placeholder={
               'Provide additional information like your location or what you need.'
             }
@@ -92,8 +129,8 @@ export const SubmitRequestScreen = ({navigation}) => {
           <CommonInput
             testID={'zip-code-field'}
             label={"What's your zip code?"}
-            onChangeText={text => setZipCode(text)}
-            value={zipCode}
+            onChangeText={text => setZip(text)}
+            value={zip}
             placeholder={'Zip code'}
             required={true}
             containerStyle={styles.formField}

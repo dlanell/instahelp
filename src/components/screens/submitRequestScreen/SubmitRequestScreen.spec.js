@@ -37,7 +37,7 @@ describe('SubmitRequestScreen', () => {
       const renderAPI = render(<SubmitRequestScreen />);
       expect(renderAPI.queryByTestId('date-field')).not.toBeNull();
     });
-    it('should call submitVolunteerRequest', async () => {
+    it('should not call submitVolunteerRequest when fields are empty', async () => {
       const promise = Promise.resolve();
       VolunteerRequestService.submitVolunteerRequest = jest
         .fn()
@@ -51,7 +51,7 @@ describe('SubmitRequestScreen', () => {
 
       expect(
         VolunteerRequestService.submitVolunteerRequest,
-      ).toHaveBeenCalledWith({});
+      ).not.toHaveBeenCalled();
 
       await act(() => promise);
     });
