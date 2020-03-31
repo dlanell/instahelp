@@ -6,7 +6,6 @@ import {
 } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
-  safeArea: {flex: 1, backgroundColor: appColors.white},
   text: {
     fontSize: heightPercentageToDP('2%'),
   },
@@ -41,15 +40,6 @@ export default StyleSheet.create({
     fontWeight: '600',
     paddingRight: 20,
     fontSize: heightPercentageToDP('2.2%'),
-  },
-  screen: {
-    height: heightPercentageToDP('88%'),
-    width: widthPercentageToDP('100%'),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    backgroundColor: appColors.white,
-    padding: 20,
   },
   instructionText: {
     marginBottom: heightPercentageToDP('5%'),

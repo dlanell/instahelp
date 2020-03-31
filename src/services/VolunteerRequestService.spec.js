@@ -3,7 +3,7 @@ import {VolunteerRequestService} from './VolunteerRequestService';
 import {API_URL} from './serviceConstants';
 
 describe('VolunteerRequestService', () => {
-  it.skip('should call submitVolunteerRequest endpoint', async () => {
+  it('should call submitVolunteerRequest endpoint', async () => {
     axios.post = jest.fn();
     const requestData = {
       name: 'yoda',
@@ -17,8 +17,14 @@ describe('VolunteerRequestService', () => {
     await VolunteerRequestService.submitVolunteerRequest(requestData);
 
     expect(axios.post).toHaveBeenCalledWith(
-      `${API_URL}/volunteerRequest`,
+      `${API_URL}/volunteer-requests`,
       requestData,
     );
+  });
+  it('should call getVolunteerRequest endpoint', async () => {
+    axios.get = jest.fn();
+    await VolunteerRequestService.getVolunteerRequests();
+
+    expect(axios.get).toHaveBeenCalledWith(`${API_URL}/volunteer-requests`);
   });
 });

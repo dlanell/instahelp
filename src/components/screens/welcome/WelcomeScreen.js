@@ -39,7 +39,7 @@ export const WelcomeScreen = ({navigation}) => {
           testID={'browse-requests-button'}
           buttonStyle={ButtonStyleEnum.SECONDARY}
           text={'Browse Requests'}
-          onPress={() => {}}
+          onPress={() => navigation.navigate(Screen.BROWSE_REQUESTS)}
         />
       </View>
     </SafeAreaView>
