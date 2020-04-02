@@ -24,7 +24,7 @@ export default StyleSheet.create({
     borderColor: appColors.grey,
     borderRadius: 10,
     height: heightPercentageToDP('5%'),
-    width: widthPercentageToDP('80%'),
+    width: widthPercentageToDP('88%'),
     fontSize: heightPercentageToDP('2%'),
     marginBottom: heightPercentageToDP('1%'),
     display: 'flex',

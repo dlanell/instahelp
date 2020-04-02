@@ -20,7 +20,7 @@ export default StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     height: heightPercentageToDP('5%'),
-    width: widthPercentageToDP('80%'),
+    width: widthPercentageToDP('88%'),
     fontSize: heightPercentageToDP('2%'),
   },
   multilineTextInputField: {
@@ -31,7 +31,7 @@ export default StyleSheet.create({
     paddingRight: 10,
     textAlignVertical: 'top',
     height: heightPercentageToDP('15%'),
-    width: widthPercentageToDP('80%'),
+    width: widthPercentageToDP('88%'),
     fontSize: heightPercentageToDP('2%'),
   },
   textInputLabelContainer: {

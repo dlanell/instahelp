@@ -37,7 +37,11 @@ export const BrowseRequestsScreen = ({navigation}) => {
               <View style={styles.cardContainer}>
                 <TouchableOpacity
                   style={styles.requestCard}
-                  onPress={() => navigation.navigate(Screen.WELCOME)}>
+                  onPress={() =>
+                    navigation.navigate(Screen.VOLUNTEER, {
+                      volunteerRequest: item,
+                    })
+                  }>
                   <View style={styles.cardDetails}>
                     <Text style={styles.cardTitle}>{item.title}</Text>
                     <Text style={styles.cardText}>

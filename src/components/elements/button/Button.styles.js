@@ -7,7 +7,7 @@ import {
 
 export default StyleSheet.create({
   button: {
-    width: widthPercentageToDP('80%'),
+    width: widthPercentageToDP('88%'),
     height: 50,
     borderRadius: 30,
     display: 'flex',

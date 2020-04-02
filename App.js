@@ -14,6 +14,7 @@ import {WelcomeScreen} from './src/components/screens/welcome/WelcomeScreen';
 import {Screen} from './src/navigation/screenConstants';
 import {SubmitRequestScreen} from './src/components/screens/submitRequestScreen/SubmitRequestScreen';
 import {BrowseRequestsScreen} from './src/components/screens/browseRequestsScreen/BrowseRequestsScreen';
+import {VolunteerScreen} from './src/components/screens/volunteerScreen/VolunteerScreen';
 
 const Stack = createStackNavigator();
 const App: () => React$Node = () => {
@@ -40,6 +41,11 @@ const App: () => React$Node = () => {
           name={Screen.BROWSE_REQUESTS}
           component={BrowseRequestsScreen}
           options={{title: 'Browse Requests'}}
+        />
+        <Stack.Screen
+          name={Screen.VOLUNTEER}
+          component={VolunteerScreen}
+          options={{title: 'Volunteer', headerBackTitle: 'Back'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
