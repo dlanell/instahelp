@@ -45,7 +45,7 @@ const App: () => React$Node = () => {
         <Stack.Screen
           name={Screen.VOLUNTEER}
           component={VolunteerScreen}
-          options={{title: 'Volunteer', headerBackTitle: 'Back'}}
+          options={{title: 'Browse Requests', headerBackTitle: 'Back'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
