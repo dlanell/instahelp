@@ -21,6 +21,23 @@ describe('VolunteerRequestService', () => {
       requestData,
     );
   });
+  it('should call volunteerForRequest endpoint', async () => {
+    axios.post = jest.fn();
+    const volunteerRequestId = 1;
+    const requestData = {
+      name: 'yoda',
+      phoneNumber: '1112224444',
+    };
+    await VolunteerRequestService.volunteerForRequest(
+      volunteerRequestId,
+      requestData,
+    );
+
+    expect(axios.post).toHaveBeenCalledWith(
+      `${API_URL}/volunteer-requests/${volunteerRequestId}/volunteer`,
+      requestData,
+    );
+  });
   it('should call getVolunteerRequest endpoint', async () => {
     axios.get = jest.fn();
     await VolunteerRequestService.getVolunteerRequests();
