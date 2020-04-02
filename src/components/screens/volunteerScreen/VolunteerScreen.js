@@ -1,18 +1,49 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Alert} from 'react-native';
 import {CommonScreenTemplate} from '../../templates/commonScreenTemplate/CommonScreenTemplate';
 import styles from './VolunteerScreen.styles';
 import {convertToMonthDayFormat} from '../../../dateUtil';
 import {CommonInput} from '../../elements/commonInput/CommonInput';
 import {Button, ButtonStyleEnum} from '../../elements/button/Button';
 import {Screen} from '../../../navigation/screenConstants';
+import {VolunteerRequestService} from '../../../services/VolunteerRequestService';
 
 export const VolunteerScreen = ({route, navigation}) => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [disableSubmit, setDisableSubmit] = useState(false);
 
-  const handleSubmit = () => {
-    navigation.navigate(Screen.WELCOME);
+  const validateInputs = () => {
+    const validName = name !== '';
+    const validPhoneNumber = phoneNumber.length === 10;
+
+    return validName && validPhoneNumber;
+  };
+
+  async function handleSubmitRequestAPI() {
+    if (disableSubmit) {
+      return;
+    }
+
+    setDisableSubmit(true);
+    await VolunteerRequestService.volunteerForRequest(volunteerRequest.id, {
+      name,
+      phoneNumber,
+    })
+      .then(() => {
+        Alert.alert('Success', 'successfully submitted volunteer request');
+        navigation.navigate(Screen.WELCOME);
+      })
+      .catch(error => {
+        Alert.alert('Error', JSON.stringify(error));
+      })
+      .finally(() => setDisableSubmit(false));
+  }
+
+  const handleSubmit = async () => {
+    validateInputs()
+      ? await handleSubmitRequestAPI()
+      : Alert.alert('Check Entries', 'Please fill out all fields to volunteer');
   };
 
   const {volunteerRequest} = route.params;

@@ -39,6 +39,10 @@ export const SubmitRequestScreen = ({navigation}) => {
   };
 
   async function handleSubmitRequestAPI() {
+    if (disableSubmit) {
+      return;
+    }
+
     setDisableSubmit(true);
     await VolunteerRequestService.submitVolunteerRequest({
       name,
@@ -60,9 +64,6 @@ export const SubmitRequestScreen = ({navigation}) => {
   }
 
   const handleSubmit = async () => {
-    if (disableSubmit) {
-      return;
-    }
     validateInputs()
       ? await handleSubmitRequestAPI()
       : Alert.alert(
