@@ -169,6 +169,7 @@ export const SubmitRequestScreen = ({navigation}) => {
           label={'How would you like to reimburse?'}
           handleActionSheet={handleActionSheet}
           value={preferredPaymentMethod}
+          placeholder={'Reimbursement method'}
         />
         <CommonInput
           testID={'phone-number-field'}
