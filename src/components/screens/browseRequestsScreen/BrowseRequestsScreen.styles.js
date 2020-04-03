@@ -9,7 +9,8 @@ export default StyleSheet.create({
   pageAction: {
     fontSize: heightPercentageToDP('2%'),
     width: widthPercentageToDP('90%'),
-    marginBottom: heightPercentageToDP('2%'),
+    marginBottom: heightPercentageToDP('3%'),
+    paddingTop: heightPercentageToDP('1%'),
   },
   title: {
     fontSize: heightPercentageToDP('3%'),
@@ -23,7 +24,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   listContainer: {
-    height: heightPercentageToDP('75%'),
+    height: heightPercentageToDP('74%'),
     width: widthPercentageToDP('90'),
     alignItems: 'center',
     paddingTop: 5,
@@ -36,7 +37,7 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     height: heightPercentageToDP('11%'),
-    width: widthPercentageToDP('80%'),
+    width: widthPercentageToDP('88%'),
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: heightPercentageToDP('2%'),

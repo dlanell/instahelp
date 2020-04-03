@@ -1,9 +1,16 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {Text, View, TouchableOpacity, Platform} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Platform,
+} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import styles from '../../screens/submitRequestScreen/SubmitRequestScreen.styles';
 import {Label} from '../label/Label';
+import {Icon} from 'native-base';
 
 export const DatePicker = ({date, setDateFn, label, testID}) => {
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -17,13 +24,15 @@ export const DatePicker = ({date, setDateFn, label, testID}) => {
   return (
     <View testID={testID} style={styles.formField}>
       <Label required label={label} />
-      <View style={styles.textFieldContainer}>
-        <Text
-          style={[styles.textField]}
-          onPress={() => setShowDatePicker(!showDatePicker)}>
-          {`${date.toString().substr(4, 12)}`}
-        </Text>
-      </View>
+      <TouchableWithoutFeedback
+        onPress={() => setShowDatePicker(!showDatePicker)}>
+        <View style={styles.dateFieldContainer}>
+          <Text style={[styles.dateField]}>
+            {`${date.toString().substr(4, 12)}`}
+          </Text>
+          <Icon name={'ios-arrow-down'} />
+        </View>
+      </TouchableWithoutFeedback>
       {showDatePicker && (
         <View>
           <TouchableOpacity>

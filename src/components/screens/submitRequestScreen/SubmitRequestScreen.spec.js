@@ -29,6 +29,12 @@ describe('SubmitRequestScreen', () => {
       const renderAPI = render(<SubmitRequestScreen />);
       expect(renderAPI.queryByTestId('phone-number-field')).not.toBeNull();
     });
+    it('should render reimbursement method field', () => {
+      const renderAPI = render(<SubmitRequestScreen />);
+      expect(
+        renderAPI.queryByTestId('reimbursement-method-field'),
+      ).not.toBeNull();
+    });
     it('should render zip code field', () => {
       const renderAPI = render(<SubmitRequestScreen />);
       expect(renderAPI.queryByTestId('zip-code-field')).not.toBeNull();

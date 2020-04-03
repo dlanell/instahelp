@@ -17,6 +17,9 @@ export default StyleSheet.create({
   primaryButton: {
     backgroundColor: appColors.brightOrange,
   },
+  disabledButton: {
+    backgroundColor: appColors.disabledGrey,
+  },
   primaryButtonText: {
     color: appColors.white,
     fontWeight: '800',
@@ -34,6 +37,11 @@ export default StyleSheet.create({
   },
   secondaryButtonText: {
     color: appColors.black,
+    fontWeight: '500',
+    fontSize: heightPercentageToDP('2%'),
+  },
+  disabledButtonText: {
+    color: appColors.white,
     fontWeight: '500',
     fontSize: heightPercentageToDP('2%'),
   },

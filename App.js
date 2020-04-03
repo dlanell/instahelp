@@ -15,6 +15,10 @@ import {Screen} from './src/navigation/screenConstants';
 import {SubmitRequestScreen} from './src/components/screens/submitRequestScreen/SubmitRequestScreen';
 import {BrowseRequestsScreen} from './src/components/screens/browseRequestsScreen/BrowseRequestsScreen';
 import {VolunteerScreen} from './src/components/screens/volunteerScreen/VolunteerScreen';
+import {Icon} from 'native-base';
+import {TouchableOpacity, Alert} from 'react-native';
+import styles from './App.styles';
+import {appColors} from './src/colors';
 
 const Stack = createStackNavigator();
 const App: () => React$Node = () => {
@@ -35,17 +39,72 @@ const App: () => React$Node = () => {
         <Stack.Screen
           name={Screen.SUBMIT_REQUEST}
           component={SubmitRequestScreen}
-          options={{title: 'Make a Request'}}
+          options={{
+            title: 'Make a Request',
+            headerStyle: {
+              backgroundColor: appColors.offWhite,
+            },
+            headerRight: () => (
+              <TouchableOpacity
+                style={styles.headerButtonRight}
+                onPress={() =>
+                  Alert.alert(
+                    'Help',
+                    'For questions and support, please email thtran@pivotal.io',
+                    [{text: 'Close'}],
+                  )
+                }>
+                <Icon name={'ios-help-circle-outline'} />
+              </TouchableOpacity>
+            ),
+          }}
         />
         <Stack.Screen
           name={Screen.BROWSE_REQUESTS}
           component={BrowseRequestsScreen}
-          options={{title: 'Browse Requests'}}
+          options={{
+            title: 'Browse Requests',
+            headerStyle: {
+              backgroundColor: appColors.offWhite,
+            },
+            headerRight: () => (
+              <TouchableOpacity
+                style={styles.headerButtonRight}
+                onPress={() =>
+                  Alert.alert(
+                    'Help',
+                    'For questions and support, please email thtran@pivotal.io',
+                    [{text: 'Close'}],
+                  )
+                }>
+                <Icon name={'ios-help-circle-outline'} />
+              </TouchableOpacity>
+            ),
+          }}
         />
         <Stack.Screen
           name={Screen.VOLUNTEER}
           component={VolunteerScreen}
-          options={{title: 'Browse Requests', headerBackTitle: 'Back'}}
+          options={{
+            title: 'Browse Requests',
+            headerBackTitle: 'Back',
+            headerStyle: {
+              backgroundColor: appColors.offWhite,
+            },
+            headerRight: () => (
+              <TouchableOpacity
+                style={styles.headerButtonRight}
+                onPress={() =>
+                  Alert.alert(
+                    'Help',
+                    'For questions and support, please email thtran@pivotal.io',
+                    [{text: 'Close'}],
+                  )
+                }>
+                <Icon name={'ios-help-circle-outline'} />
+              </TouchableOpacity>
+            ),
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

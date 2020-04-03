@@ -99,10 +99,12 @@ export const VolunteerScreen = ({route, navigation}) => {
               value={phoneNumber}
               containerStyle={styles.lastField}
               placeholder={'(000) 000 - 0000'}
+              maxLength={10}
               required
             />
           </View>
           <Button
+            disabled={disableSubmit || !validateInputs()}
             testID={'volunteer-request-submit-button'}
             onPress={handleSubmit}
             text={'Volunteer'}

@@ -15,6 +15,7 @@ export const Button = ({
   optionalStyle,
   onPress,
   disabled,
+  disablePress,
 }) => {
   return (
     <TouchableOpacity
@@ -23,14 +24,18 @@ export const Button = ({
       onPress={onPress}
       style={[
         styles.button,
-        buttonStyle === ButtonStyleEnum.PRIMARY
+        disabled
+          ? styles.disabledButton
+          : buttonStyle === ButtonStyleEnum.PRIMARY
           ? styles.primaryButton
           : styles.secondaryButton,
         optionalStyle && optionalStyle,
       ]}>
       <Text
         style={
-          buttonStyle === ButtonStyleEnum.PRIMARY
+          disabled
+            ? styles.disabledButtonText
+            : buttonStyle === ButtonStyleEnum.PRIMARY
             ? styles.primaryButtonText
             : styles.secondaryButtonText
         }>
@@ -47,4 +52,5 @@ Button.propTypes = {
   testID: PropTypes.string,
   onPress: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
+  disablePress: PropTypes.bool,
 };

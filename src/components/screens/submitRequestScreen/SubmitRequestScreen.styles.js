@@ -34,6 +34,27 @@ export default StyleSheet.create({
     paddingLeft: 20,
     fontSize: heightPercentageToDP('2%'),
   },
+  placeholderText: {
+    color: appColors.darkGrey,
+    fontSize: heightPercentageToDP('2%'),
+  },
+  dateField: {
+    fontSize: heightPercentageToDP('2%'),
+  },
+  dateFieldContainer: {
+    borderWidth: 1,
+    borderColor: appColors.grey,
+    borderRadius: 10,
+    paddingRight: 15,
+    paddingLeft: 10,
+    height: heightPercentageToDP('5%'),
+    width: widthPercentageToDP('88%'),
+    marginBottom: heightPercentageToDP('1%'),
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   doneText: {
     color: appColors.lightBlue,
     textAlign: 'right',

@@ -13,7 +13,7 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: appColors.white,
+    backgroundColor: appColors.offWhite,
     padding: 20,
   },
 });

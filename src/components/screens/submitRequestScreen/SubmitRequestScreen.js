@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, ScrollView, Alert} from 'react-native';
+import {Text, ScrollView, Alert, ActionSheetIOS} from 'react-native';
 import {Screen} from '../../../navigation/screenConstants';
 import styles from './SubmitRequestScreen.styles';
 import {
@@ -10,6 +10,7 @@ import {Button, ButtonStyleEnum} from '../../elements/button/Button';
 import {DatePicker} from '../../elements/datePicker/DatePicker';
 import {VolunteerRequestService} from '../../../services/VolunteerRequestService';
 import {CommonScreenTemplate} from '../../templates/commonScreenTemplate/CommonScreenTemplate';
+import {IOSPicker} from '../../elements/iOSPicker/IOSPicker';
 
 export const SubmitRequestScreen = ({navigation}) => {
   const [name, setName] = useState('');
@@ -17,7 +18,8 @@ export const SubmitRequestScreen = ({navigation}) => {
   const [details, setDetails] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [zip, setZip] = useState('');
-  const [date, setDate] = useState(addDays(new Date()));
+  const [preferredPaymentMethod, setPreferredPaymentMethod] = useState(null);
+  const [date, setDate] = useState(new Date());
   const [disableSubmit, setDisableSubmit] = useState(false);
 
   function addDays(dateValue) {
@@ -25,6 +27,32 @@ export const SubmitRequestScreen = ({navigation}) => {
     copy.setDate(dateValue.getDate() + 2);
     return copy;
   }
+
+  const handleActionSheet = () => {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        options: ['Cancel', 'CashApp', 'PayPal', 'Venmo', 'Zelle'],
+        cancelButtonIndex: 0,
+        title: 'Please select reimbursement method',
+      },
+      buttonIndex => {
+        switch (buttonIndex) {
+          case 1:
+            setPreferredPaymentMethod('CashApp');
+            return;
+          case 2:
+            setPreferredPaymentMethod('PayPal');
+            return;
+          case 3:
+            setPreferredPaymentMethod('Venmo');
+            return;
+          case 4:
+            setPreferredPaymentMethod('Zelle');
+            return;
+        }
+      },
+    );
+  };
 
   const validateInputs = () => {
     const validName = name !== '';
@@ -51,6 +79,7 @@ export const SubmitRequestScreen = ({navigation}) => {
       date,
       zip,
       phoneNumber,
+      preferredPaymentMethod,
       email: '',
     })
       .then(() => {
@@ -134,6 +163,13 @@ export const SubmitRequestScreen = ({navigation}) => {
           setDateFn={setDate}
           label={'When do you need it by?'}
         />
+        <IOSPicker
+          testID={'reimbursement-method-field'}
+          detailedLabel={'If applicable to your request'}
+          label={'How would you like to reimburse?'}
+          handleActionSheet={handleActionSheet}
+          value={preferredPaymentMethod}
+        />
         <CommonInput
           testID={'phone-number-field'}
           label={'Phone number'}
@@ -148,7 +184,7 @@ export const SubmitRequestScreen = ({navigation}) => {
         />
         <Button
           testID={'submit-volunteer-request-button'}
-          disabled={disableSubmit}
+          disabled={disableSubmit || !validateInputs()}
           onPress={handleSubmit}
           buttonStyle={ButtonStyleEnum.PRIMARY}
           text={'Submit Request'}
