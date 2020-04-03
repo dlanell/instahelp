@@ -6,7 +6,11 @@ describe('IOSPicker', () => {
   describe('by default', () => {
     it('should render label', () => {
       const renderAPI = render(
-        <IOSPicker label={'label'} handleActionSheet={jest.fn()} />,
+        <IOSPicker
+          label={'label'}
+          handleActionSheet={jest.fn()}
+          placeholder={'Reimbursement method'}
+        />,
       );
       expect(renderAPI.queryByText('label')).not.toBeNull();
     });
@@ -16,6 +20,7 @@ describe('IOSPicker', () => {
           label={'label'}
           detailedLabel={'another label'}
           handleActionSheet={jest.fn()}
+          placeholder={'Reimbursement method'}
         />,
       );
       expect(renderAPI.queryByText('another label')).not.toBeNull();

@@ -64,6 +64,16 @@ export const VolunteerScreen = ({route, navigation}) => {
             ]}>{`Date needed: ${convertToMonthDayFormat(
             volunteerRequest.date,
           )}`}</Text>
+          {volunteerRequest.preferredPaymentMethod !== null && (
+            <Text
+              testID={'volunteer-reimbursement-method'}
+              style={[
+                styles.text,
+                styles.infoSpacing,
+              ]}>{`Reimbursement method: ${
+              volunteerRequest.preferredPaymentMethod
+            }`}</Text>
+          )}
           <Text
             testID={'volunteer-request-zip'}
             style={[styles.text]}>{`Where to: ${volunteerRequest.zip}`}</Text>
